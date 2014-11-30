@@ -26,11 +26,14 @@ font pango:Droid Sans Mono 10
 client.background #000000
 # client.focused  #444444 #444444 #ffffff #2e9ef4d 
 client.focused  #859900 #8599004 #eee8d5 #859900 
-client.unfocused  #073642 #073642 #93a1a1 #586e75 
+client.unfocused  #073642 #073642 #93a1a1 #f586e75 
+
+bindsym $mod+F1 exec --no-startup-id setxkbmap fr
+bindsym $mod+F2 exec --no-startup-id setxkbmap fr -variant bepo
 
 # Sound settings
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 1dB+ unmute
-bindsym XF86AudioLowerVolume exec amixer -q set Master 1dB- unmute
+bindsym XF86AudioRaiseVolume exec amixer -q -c 1 set Master 2dB+ unmute
+bindsym XF86AudioLowerVolume exec amixer -q -c 1 set Master 2dB- unmute
 bindsym XF86AudioMute exec amixer -q set Master toggle
 # Backlight
 bindcode 232 exec xbacklight -dec 10
@@ -46,7 +49,7 @@ floating_modifier $mod
 bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
-bindsym $mod+Shift+Q kill
+bindsym $mod+C kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run
@@ -200,10 +203,11 @@ bar {
 
 		focused_workspace  #002b36 #859900 #003b36
 		active_workspace   #333333 #5f676a #ffffff
-		inactive_workspace #586e75 #222222 #002b36
+		inactive_workspace #073642 #002b36 #93a1a1
 		urgent_workspace   #2f343a #900000 #ffffff
 	}
 }
+
 
 # startup programs
 exec --no-startup-id nitrogen --restore
