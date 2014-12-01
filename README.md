@@ -1,4 +1,8 @@
 dotfiles
 ========
 
-Linux configuration files
+Linux configuration files:
+- i3
+- zshrc
+- terminator
+- Xdefaults
