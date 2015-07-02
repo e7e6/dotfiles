@@ -14,16 +14,16 @@
 
 (scroll-bar-mode 0)
 (tool-bar-mode 0)
-
-(load-theme 'flatui t)
+(menu-bar-mode -99)
+(load-theme 'material-light t)
 
 ;; setting font
-(set-frame-font "PragmataPro-11" nil t)
+;;(set-frame-font "PragmataPro-12" nil t)
 
-;;Change "yes or no" to "y or n"
+;; Get rid of some [startup] messages
 (fset 'yes-or-no-p 'y-or-n-p)
+(setq confirm-nonexistent-file-or-buffer nil)
 
-;; Startup messages
 (setq inhibit-startup-message t
       inhibit-startup-echo-area-message t)
 
@@ -31,6 +31,17 @@
 ;; Cursor
 (blink-cursor-mode 0)
 (global-hl-line-mode 1)
+
+(show-paren-mode t)
+
+;; rebind forward word to go to first letter of next word
+(require 'misc)
+(global-set-key (kbd "M-f") 'forward-to-word)
+
+;; sometimes useful to avoid showing password in shell
+;; move to proper section?
+(add-hook 'comint-output-filter-functions
+'comint-watch-for-password-prompt)
 
 ;; ------------------------------------------------------------------------------------
 ;; Tabulation
@@ -89,21 +100,30 @@
   	     (dired up)
   	     (dired-goto-file dir))))))
 
+;; disable omit mode, so we can keep on switching with M-o
+ (setq dired-omit-mode nil)
+
+;; sort directory before
+(require 'dired-sort-map)
+(setq dired-listing-switches "--group-directories-first -alh")
+
+
 ;; ------------------------------------------------------------------------------------
 ;; Shell
 (setq tramp-default-method "ssh")
 (global-set-key (kbd "C-=") 'cssh-term-remote-open)
-(setq explicit-shell-file-name "/bin/bash")
+
+(setq explicit-shell-file-name "/bin/zsh")
 
 ;;(require 'multi-term)
-(setq multi-term-program "/bin/bash")
+(setq multi-term-program "/bin/zsh")
 
 ; allow copy paste
 (add-hook 'term-mode-hook (lambda ()
                             (define-key term-raw-map (kbd "C-y") 'term-paste)))
 
 ;; don't ask which shell to start
-(defvar my-term-shell "/bin/bash")
+(defvar my-term-shell "/bin/zsh")
 (defadvice ansi-term (before force-bash)
   (interactive (list my-term-shell)))
 (ad-activate 'ansi-term)
@@ -136,6 +156,8 @@
 
 (add-hook 'term-exec-hook 'oleh-term-exec-hook)
 
+;; unlimited scrooling
+(setq term-buffer-maximum-size 0) 
 
 ;; ------------------------------------------------------------------------------------
 ;; Imenu
@@ -149,8 +171,12 @@
 (setq ido-everywhere t)
 (setq ido-enable-flex-matching t)
 
+;; Don't ask for confirmation to create a new buffer
+(setq ido-create-new-buffer 'always)
+
 ;; ------------------------------------------------------------------------------------
 ;; Helm
+
 (require 'helm-config)
 (helm-mode 1)
 
@@ -159,3 +185,104 @@
 ;; Change zap to char to exclude char with package zop
 (global-set-key [remap zap-to-char] 'zop-to-char)
 
+;; ------------------------------------------------------------------------------------
+;; pdf viewing
+
+;;(pdf-tools-install)
+
+;; ------------------------------------------------------------------------------------
+;; Evil
+
+;;(require 'evil)
+;;(evil-mode 1)
+;;
+;;;; change cursor color depending on state
+;;(setq evil-emacs-state-cursor '("red" box))
+;;(setq evil-normal-state-cursor '("green" box))
+;;(setq evil-visual-state-cursor '("orange" box))
+;;(setq evil-insert-state-cursor '("red" bar))
+;;(setq evil-replace-state-cursor '("red" bar))
+;;(setq evil-operator-state-cursor '("red" hollow))
+;;
+;;;; esc quits
+;;(defun minibuffer-keyboard-quit ()
+;;  "Abort recursive edit.
+;;In Delete Selection mode, if the mark is active, just deactivate it;
+;;then it takes a second \\[keyboard-quit] to abort the minibuffer."
+;;  (interactive)
+;;  (if (and delete-selection-mode transient-mark-mode mark-active)
+;;      (setq deactivate-mark  t)
+;;    (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
+;;    (abort-recursive-edit)))
+;;(define-key evil-normal-state-map [escape] 'keyboard-quit)
+;;(define-key evil-visual-state-map [escape] 'keyboard-quit)
+;;(define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
+;;(define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
+;;(define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
+;;(define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
+;;(define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
+;;(global-set-key [escape] 'evil-exit-emacs-state)
+
+;; ------------------------------------------------------------------------------------
+;; Org
+
+;;Execute sql commands from org-mode
+(require 'sql)
+(require 'ob-sql)
+(require 'shell)
+
+
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
+(require 'sql)
+(require 'ob-sql)
+(require 'ob-sh)
+
+;;(require 'evil-org)
+
+;; ------------------------------------------------------------------------------------
+;; Powerline 
+
+;;(require 'powerline)
+;;(powerline-default-theme)
+;;(powerline-evil-vim-color-theme)
+;;(display-time-mode t)
+
+;; ------------------------------------------------------------------------------------
+;; Window management
+
+;;(eyebrowse-mode t)
+;;(eyebrowse-setup-opinionated-keys)
+
+;; ------------------------------------------------------------------------------------
+;; Special file types
+
+;; markdown
+(autoload 'markdown-mode "markdown-mode"
+   "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+
+
+;; ------------------------------------------------------------------------------------
+;; Backups and autosave
+
+;; store all backup and autosave files in the tmp dir
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
+
+;; ------------------------------------------------------------------------------------
+;; Encoding
+
+(prefer-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+
+;; for windows machines
+;;(set-language-environment "windows-1252-dos")
