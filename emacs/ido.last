@@ -1,0 +1,51 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/Users/anthony/Documents/Notes/" . "Confs/")
+ ("/Users/anthony/Documents/" . "Notes/")
+ ("/Users/anthony/" . ".emacs.d/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/Users/anthony/Documents/Notes/"
+ "/Users/anthony/.emacs.d/"
+ "/Applications/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "pgconfus_proposal_20230610.org"
+ "init.el"
+ "interview_databene_cedric_villemain_20230608.org"
+ "1.org"
+ "interview_datadog_2023.org"
+ "emacs_notes.org"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/Users/anthony/.emacs.d/" (25731 3333 485200 342000) "elpa/" "bookmarks" "init.el" "auto-save-list/" "transient/" ".local/" "init.el~" "ido.last" "../" "./")
+
+ ("/Users/anthony/Documents/Notes/" (25731 2492 733495 6000) "todo_perso.org~" "entretien_zalando.txt" "todo_perso.org" "2.org" "interview_datadog_2023.org" "Confs/" "coc_pgconfeu_20221027.md" "todo_it.md" "coc_meeting_20221124.md" "todo_reading.org" "1.org" "presentation_hd_paris_infotech_20161124.md" "todo_it.org~" "entretien_zalando.md" "Unix/" "emacs_notes.org" "presentation_nantes.md" "pgconfeu_milan_2019.md" "interview_databene_cedric_villemain_20230608.org" "random_notes.org" "postgresql_beta_book.org" "entretien_aws_2022.md" "formation_azure_202011.md" "learning.org" "presentation_nantes.pdf" "presentation_hd_paris_infotech_20161124.pdf" "Databases/" "todo_it.org" "index.org" "entretien_zalando_2.md" "../" "./")
+
+ ("/Users/anthony/" (25731 2934 389106 314000) ".zsh_sessions/" ".viminfo" ".gitconfig" ".cache/" "tmp/" ".python_history" "Downloads/" ".bash_profile" "Documents/" ".terraform.d/" "Dev/" ".Trash/" "Chess/" "Applications/" ".vimrc" "Movies/" ".ssh/" ".ansible/" ".ansible.cfg" ".vscode-oss/" "Public/" ".scid4.8/" ".emacs.d.OLD/" ".emacs.d/" ".doom.d/" "Books/" ".lesshst" "Library/" "Desktop/" ".zsh_history" ".zprofile" "Pictures/" ".psql_history" ".local/" ".tmux.conf.BACKUP" ".swp" ".zshrc" ".bashrc" ".CFUserTextEncoding" ".tmux.conf" ".DS_Store" "go/" ".terminfo/" ".vim/" ".docker/" ".wine/" ".scidvspc/" "Music/" ".config/" "../" "./")
+
+ ("/Applications/" (25730 6610 130855 616000) "scid.app/" "Opera.app/" "Slack.app/" "Microsoft Teams.app/" "darktable.app/" "Alacritty.app/" "Emacs.app/" "Firefox.app/" "VSCodium.app/" "iTerm.app/" "Amethyst.app/" "Wine Stable.app/" "Brave Browser.app/" "Bitwarden.app/" "LibreOffice.app/" "zoom.us.app/" "UTM.app/" "Utilities/" "Arc.app/" "Safari.app/" "Docker.app/" "TopNotch.app/" "DBeaver.app/" ".localized" "Rectangle.app/" "Todoist.app/" "Opera Developer.app/" "Signal.app/" "Vivaldi.app/" "VLC.app/" "../" "./")
+
+ ("/Applications/Emacs.app/" (25375 30615 0 0) "Contents/" "../" "./")
+
+ ("/Applications/Emacs.app/Contents/" (25375 30932 0 0) "PkgInfo" "Info.plist" "Resources/" "MacOS/" "_CodeSignature/" "../" "./")
+
+ ("/Applications/Emacs.app/Contents/Resources/" (25375 30700 0 0) "Emacs.icns" "Credits.html" "site-lisp/" "info/" "etc/" "include/" "document.icns" "lisp/" "English.lproj/" "man/" "../" "./")
+
+ ("/Applications/Emacs.app/Contents/Resources/info/" (25375 30625 0 0) "ido.info.gz" "htmlfontify.info.gz" "emacs-gnutls.info.gz" "ede.info.gz" "mairix-el.info.gz" "bovine.info.gz" "erc.info.gz" "ccmode.info.gz" "eintr.info.gz" "ediff.info.gz" "gnus.info.gz" "rcirc.info.gz" "cl.info.gz" "smtpmail.info.gz" "tramp.info.gz" "vip.info.gz" "pcl-cvs.info.gz" "ert.info.gz" "forms.info.gz" "remember.info.gz" "ebrowse.info.gz" "newsticker.info.gz" "dir" "mh-e.info.gz" "elisp.info.gz" "semantic.info.gz" "url.info.gz" "sc.info.gz" "srecode.info.gz" "ses.info.gz" "dired-x.info.gz" "dbus.info.gz" "woman.info.gz" "nxml-mode.info.gz" "org.info.gz" "info.info.gz" "emacs.info.gz" "calc.info.gz" "eieio.info.gz" "todo-mode.info.gz" "speedbar.info.gz" "eshell.info.gz" "eudc.info.gz" "octave-mode.info.gz" "wisent.info.gz" "auth.info.gz" "vhdl-mode.info.gz" "idlwave.info.gz" "widget.info.gz" "efaq.info.gz" "sieve.info.gz" "eww.info.gz" "pgg.info.gz" "emacs-mime.info.gz" "flymake.info.gz" "modus-themes.info.gz" "viper.info.gz" "edt.info.gz" "transient.info.gz" "sasl.info.gz" "autotype.info.gz" "epa.info.gz" "message.info.gz" "reftex.info.gz" "../" "./")
+
+ ("/Users/anthony/Documents/Notes/Confs/" (25464 1643 0 0) "pgdayfr_2016.org" "MeetupDatageeks_20150325.txt" "pgsession7.md.copy" "PgConfEu_2017_Warsaw.md" "pgsession7.md" "MeetupCassandra.org" ".swo" "MeetupCassandra_20160613.md" "pgday2015.txt" "MeetupDatageeks_20150325.org" "MeetupPostgres_20150205.txt" "CassandraDay_20150616.org" ".PgConfEu_2017_CompteRendu_20171027.md.swp" "MeetupCassandra_20160613.org" "pgsession7.org" "PgdayParis_20150521.org" ".PgConfEu_2017_Warsaw.md.swp" "CassandraDay_20150616.pdf" "pgsession7.pdf" ".swp" "peoplesoft_performance_mep_202005.md" "Meetup_PostgreSQL_20150623.org" "MeetupDatageeks_20150527.md" "../" "./")
+
+ ("/Users/anthony/Documents/" (25564 9562 909522 730000) "brew.list" "twitter.list" "Perso/" "chessdata/" "pw.kdbx" "Notes/" ".localized" "Administratif/" ".DS_Store" "../" "./")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t
