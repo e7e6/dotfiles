@@ -2,7 +2,37 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("Notes"
+(("postgres@rocky"
+ (filename . "/ssh:anthony@192.168.64.2|sudo:postgres@192.168.64.2:/var/lib/pgsql/")
+ (front-context-string . "15\n  drwx------.")
+ (rear-context-string . "51 May 10 19:51 ")
+ (position . 288))
+("org-capture-last-stored"
+ (filename . "~/Documents/Notes/meetings.org")
+ (front-context-string . "**** Discussion ")
+ (rear-context-string . "-07-13 Thursday\n")
+ (position . 32428))
+("org-refile-last-stored"
+ (filename . "~/Documents/Notes/meetings.org")
+ (front-context-string . "**** AWS intervi")
+ (rear-context-string . "*** 2022-10-28\n\n")
+ (position . 25772))
+("init.el"
+ (filename . "~/.emacs.d/init.el")
+ (front-context-string . "      ;;  (t . (")
+ (rear-context-string . "nbow bold 1.2))\n")
+ (position . 14779))
+("postgres_pgdayfr_strasbourg_2023.org"
+ (filename . "~/Documents/Notes/conferences/postgres_pgdayfr_strasbourg_2023.org")
+ (front-context-string . "* TODO Mails aux")
+ (rear-context-string . " orateur Sara\n\n*")
+ (position . 569))
+("Git"
+ (filename . "~/Git/")
+ (front-context-string . "dotfiles\n  drwxr")
+ (rear-context-string . "16 Jun 13 16:54 ")
+ (position . 299))
+("Notes"
  (filename . "~/Documents/Notes/")
  (front-context-string . ".DS_Store\n  drwx")
  (rear-context-string . "48 Jun  2 15:55 ")
