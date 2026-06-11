@@ -26,7 +26,7 @@
 ;; (load-theme 'material-light t)
 
 ;; setting font
-(set-frame-font "Iosevka-13" nil t)
+;;(set-frame-font "Iosevka-13" nil t)
 
 ;; Get rid of some [startup] messages
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -64,6 +64,77 @@
       (define-key term-raw-map (kbd "M-o") 'other-window)))
 
 ;; (winner-mode 1)
+
+;; ------------------------------------------------------------------------------------
+;; Denote
+
+(use-package denote
+  :ensure t
+  :hook
+  (;; If you use plain text files (.txt), then you want to make the
+   ;; Denote links clickable (Org mode and Markdown mode render links
+   ;; as buttons right away and provide commands to open them)
+   (text-mode . denote-fontify-links-mode)
+   ;; Apply colours to Denote names in Dired.  This applies to all
+   ;; directories.  Check `denote-dired-directories' for the specific
+   ;; directories you may prefer instead.  Then, instead of
+   ;; `denote-dired-mode', use `denote-dired-mode-in-directories'.
+   (dired-mode . denote-dired-mode))
+  :bind
+  ;; Denote DOES NOT define any key bindings.  This is for the user to
+  ;; decide.  For example:
+  ( :map global-map
+    ("C-c n n" . denote)
+    ("C-c n d" . denote-dired)
+    ("C-c n g" . denote-grep)
+    ;; If you intend to use Denote with a variety of file types, it is
+    ;; easier to bind the link-related commands to the `global-map', as
+    ;; shown here.  Otherwise follow the same pattern for `org-mode-map',
+    ;; `markdown-mode-map', and/or `text-mode-map'.
+    ("C-c n l" . denote-link)
+    ("C-c n L" . denote-add-links)
+    ("C-c n b" . denote-backlinks)
+    ("C-c n q c" . denote-query-contents-link) ; create link that triggers a grep
+    ("C-c n q f" . denote-query-filenames-link) ; create link that triggers a dired
+    ;; Note that `denote-rename-file' can work from any context, not just
+    ;; Dired bufffers.  That is why we bind it here to the `global-map'.
+    ("C-c n r" . denote-rename-file)
+    ("C-c n R" . denote-rename-file-using-front-matter)
+
+    ;; Key bindings specifically for Dired.
+    :map dired-mode-map
+    ("C-c C-d C-i" . denote-dired-link-marked-notes)
+    ("C-c C-d C-r" . denote-dired-rename-files)
+    ("C-c C-d C-k" . denote-dired-rename-marked-files-with-keywords)
+    ("C-c C-d C-R" . denote-dired-rename-marked-files-using-front-matter))
+
+  :config
+  ;; Remember to check the docstring of each of those variables.
+  (setq denote-directory (expand-file-name "~/Notes/"))
+  (setq denote-save-buffers nil)
+  ;;(setq denote-known-keywords '("emacs" "philosophy" "politics" "economics"))
+  (setq denote-infer-keywords t)
+  (setq denote-sort-keywords t)
+  (setq denote-prompts '(title keywords))
+  (setq denote-excluded-directories-regexp nil)
+  (setq denote-keywords-to-not-infer-regexp nil)
+  (setq denote-rename-confirmations '(rewrite-front-matter modify-file-name))
+
+  ;; Pick dates, where relevant, with Org's advanced interface:
+  (setq denote-date-prompt-use-org-read-date t)
+
+  ;; Automatically rename Denote buffers using the `denote-rename-buffer-format'.
+  (denote-rename-buffer-mode 1))
+
+
+
+
+
+
+
+
+
+
 
 ;; ------------------------------------------------------------------------------------
 ;; Dired
@@ -470,13 +541,63 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes
-   '(gruvbox-light-hard gruvbox-dark-soft gruvbox-dark-hard gruvbox-light-soft zenburn ef-winter ef-symbiosis ef-bio ef-day ef-deuteranopia-light ef-duo-dark ef-duo-light ef-frost ef-kassio spacemacs-light ef-light modus-vivendi))
+ '(custom-enabled-themes '(modus-vivendi))
  '(custom-safe-themes
-   '("ba323a013c25b355eb9a0550541573d535831c557674c8d59b9ac6aa720c21d3" "98ef36d4487bf5e816f89b1b1240d45755ec382c7029302f36ca6626faf44bbd" "a5270d86fac30303c5910be7403467662d7601b821af2ff0c4eb181153ebfc0a" "871b064b53235facde040f6bdfa28d03d9f4b966d8ce28fb1725313731a2bcc8" "046a2b81d13afddae309930ef85d458c4f5d278a69448e5a5261a5c78598e012" "d445c7b530713eac282ecdeea07a8fa59692c83045bf84dd112dd738c7bcad1d" "f5f3921b9cec1b37758ba865127d773f8f5e4816e63712af7582b447acfa5326" "41bbaed6a17405ee6929c7e1f8035cffd05d0ebf3f08ce388da0e92c63fb6cef" "02790c735d32ad3b28c630329fdfc503ea62077d088b0c52302ab61e5a3b037e" "aee4c6b492ad130f13868464e4d7f2b2846de9b7f0d2933499c907f47dc010f4" "032426ec19e515fd3a54b38016a1c5e4ec066be3230198cb3df82d05630a02ed" "d47e82e61cffed27dd2aef3b614f6dd727776f6bcb92e738e89056b325a5aeab" "5ccda8419d11dec4afc7d5afc71de75e76f2d0ce6e845bf6831582c67ee79086" "f126b518f12b4f6bd50808143f7bd26c1d47de25d90170d3d632a46c2a08a1af" "471b78fcfb7a535680b1a9773870d1525389fd2c5559d5707940d0ecc181eb69" "2141b59c9b098b476a7e20f7a621985b5d89544ae22a8d4b79b574f1203b6496" "1781e8bccbd8869472c09b744899ff4174d23e4f7517b8a6c721100288311fa5" "1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" "82d2cac368ccdec2fcc7573f24c3f79654b78bf133096f9b40c20d97ec1d8016" "68b35e92f9daa37685218bd11aa5307140a0ec4c8fd17142a83457619e7b1240" "13f343f7d098365848ba4366801a9ae91c35faea85b017818fd4d07dfd18de61" "e5a748cbefd483b74b183d7da4fca6228207a6bf9be9792dc85403a186724e1f" "e0aaf54e0194bd9f452ae36f0012b23d3f82d2092e2b800cc07e0e73f4ac131f" "d13b6ae136b853bc69c036009b6290f546e6c9c7ad026f60b0ce2a4f9a943d5f" "8294b451ffe0575fcccd1a447f56efc94d9560787cd5ff105e620e5f5771427d" "910b36cacb8486580842582661ab2f16d8e05e6ec081dcaa141e0ca98ee5e9c2" "c6b317b294f9e0ecf7290a6d76b4c96ffd52213cdcb3fdad5db29141c63866cf" "20d3ce5f5cb95716edca608ef7bbc27d9f8d66c9a51200f7be3f08c107810f3e" "49887e6f0c666dfc10fad4c23c7a83a176cb296968648c02b85deec25bb11103" "c06aa0ddb649e4e45f36dd95de98263672864074373937e65a23c8338f52c6af" "bcfeecf5f2ee0bbc64450f7c5155145d8d2c590b1310a898c505f48b4b5f4c75" "de8f2d8b64627535871495d6fe65b7d0070c4a1eb51550ce258cd240ff9394b0" "e7820b899036ae7e966dcaaec29fd6b87aef253748b7de09e74fdc54407a7a02" "06f0b439b62164c6f8f84fdda32b62fb50b6d00e8b01c2208e55543a6337433a" "eab123a5ed21463c780e17fc44f9ffc3e501655b966729a2d5a2072832abd3ac" "f366d4bc6d14dcac2963d45df51956b2409a15b770ec2f6d730e73ce0ca5c8a7" "7fd8b914e340283c189980cd1883dbdef67080ad1a3a9cc3df864ca53bdc89cf" "bbb13492a15c3258f29c21d251da1e62f1abb8bbd492386a673dcfab474186af" "628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" "bb08c73af94ee74453c90422485b29e5643b73b05e8de029a6909af6a3fb3f58" default))
+   '("516ec39655c85f346393f5d93e0f03602b6bfc33335bf2fd673016c9c4cdc69e"
+     "6a95b0faf6cee6adfda34cdfadb2fed6f4157a1d49aabef8cc9b94c187d69a1d"
+     "8fbf2d585f1138caaafa9e523fa3a20614c1d1dcc6002c9808c3e40028e21df4"
+     "84581927169c3b4a7c57fd0f8cce8aa91823291e403bd577fde32b8c30800279"
+     "1b7e575c6681e66d8d83634c2c160b40af12f3756360a4dd81b8032f4495cb5e"
+     "ba323a013c25b355eb9a0550541573d535831c557674c8d59b9ac6aa720c21d3"
+     "98ef36d4487bf5e816f89b1b1240d45755ec382c7029302f36ca6626faf44bbd"
+     "a5270d86fac30303c5910be7403467662d7601b821af2ff0c4eb181153ebfc0a"
+     "871b064b53235facde040f6bdfa28d03d9f4b966d8ce28fb1725313731a2bcc8"
+     "046a2b81d13afddae309930ef85d458c4f5d278a69448e5a5261a5c78598e012"
+     "d445c7b530713eac282ecdeea07a8fa59692c83045bf84dd112dd738c7bcad1d"
+     "f5f3921b9cec1b37758ba865127d773f8f5e4816e63712af7582b447acfa5326"
+     "41bbaed6a17405ee6929c7e1f8035cffd05d0ebf3f08ce388da0e92c63fb6cef"
+     "02790c735d32ad3b28c630329fdfc503ea62077d088b0c52302ab61e5a3b037e"
+     "aee4c6b492ad130f13868464e4d7f2b2846de9b7f0d2933499c907f47dc010f4"
+     "032426ec19e515fd3a54b38016a1c5e4ec066be3230198cb3df82d05630a02ed"
+     "d47e82e61cffed27dd2aef3b614f6dd727776f6bcb92e738e89056b325a5aeab"
+     "5ccda8419d11dec4afc7d5afc71de75e76f2d0ce6e845bf6831582c67ee79086"
+     "f126b518f12b4f6bd50808143f7bd26c1d47de25d90170d3d632a46c2a08a1af"
+     "471b78fcfb7a535680b1a9773870d1525389fd2c5559d5707940d0ecc181eb69"
+     "2141b59c9b098b476a7e20f7a621985b5d89544ae22a8d4b79b574f1203b6496"
+     "1781e8bccbd8869472c09b744899ff4174d23e4f7517b8a6c721100288311fa5"
+     "1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e"
+     "82d2cac368ccdec2fcc7573f24c3f79654b78bf133096f9b40c20d97ec1d8016"
+     "68b35e92f9daa37685218bd11aa5307140a0ec4c8fd17142a83457619e7b1240"
+     "13f343f7d098365848ba4366801a9ae91c35faea85b017818fd4d07dfd18de61"
+     "e5a748cbefd483b74b183d7da4fca6228207a6bf9be9792dc85403a186724e1f"
+     "e0aaf54e0194bd9f452ae36f0012b23d3f82d2092e2b800cc07e0e73f4ac131f"
+     "d13b6ae136b853bc69c036009b6290f546e6c9c7ad026f60b0ce2a4f9a943d5f"
+     "8294b451ffe0575fcccd1a447f56efc94d9560787cd5ff105e620e5f5771427d"
+     "910b36cacb8486580842582661ab2f16d8e05e6ec081dcaa141e0ca98ee5e9c2"
+     "c6b317b294f9e0ecf7290a6d76b4c96ffd52213cdcb3fdad5db29141c63866cf"
+     "20d3ce5f5cb95716edca608ef7bbc27d9f8d66c9a51200f7be3f08c107810f3e"
+     "49887e6f0c666dfc10fad4c23c7a83a176cb296968648c02b85deec25bb11103"
+     "c06aa0ddb649e4e45f36dd95de98263672864074373937e65a23c8338f52c6af"
+     "bcfeecf5f2ee0bbc64450f7c5155145d8d2c590b1310a898c505f48b4b5f4c75"
+     "de8f2d8b64627535871495d6fe65b7d0070c4a1eb51550ce258cd240ff9394b0"
+     "e7820b899036ae7e966dcaaec29fd6b87aef253748b7de09e74fdc54407a7a02"
+     "06f0b439b62164c6f8f84fdda32b62fb50b6d00e8b01c2208e55543a6337433a"
+     "eab123a5ed21463c780e17fc44f9ffc3e501655b966729a2d5a2072832abd3ac"
+     "f366d4bc6d14dcac2963d45df51956b2409a15b770ec2f6d730e73ce0ca5c8a7"
+     "7fd8b914e340283c189980cd1883dbdef67080ad1a3a9cc3df864ca53bdc89cf"
+     "bbb13492a15c3258f29c21d251da1e62f1abb8bbd492386a673dcfab474186af"
+     "628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d"
+     "bb08c73af94ee74453c90422485b29e5643b73b05e8de029a6909af6a3fb3f58"
+     default))
  '(olivetti-body-width 120)
  '(package-selected-packages
-   '(docker gruvbox-theme org-contacts ef-themes csv-mode nano-theme corfu markdown-mode spacemacs-theme color-theme-sanityinc-tomorrow zenburn-theme magit olivetti which-key orderless use-package marginalia vertico)))
+   '(color-theme-sanityinc-tomorrow corfu csv-mode denote docker
+				    ef-themes erc gruvbox-theme magit
+				    marginalia markdown-mode
+				    nano-theme olivetti orderless
+				    org-contacts spacemacs-theme
+				    use-package vertico which-key
+				    zenburn-theme)))
 
 
 ;;   (custom-set-variables
