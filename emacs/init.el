@@ -281,14 +281,14 @@
 ;; Org
 
 
-(setq org-default-notes-file "~/Documents/Notes/inbox.org")
-(setq org-directory "~/Documents/Notes")
-(setq org-agenda-files  '("inbox.org" "gtd.org" "resources.org" "meetings.org"))
+(setq org-default-notes-file "~/Notes/inbox.org")
+(setq org-directory "~/Notes")
+(setq org-agenda-files  '("inbox.org" "meetings.org"))
 
 
 ;; have the main org file easily accessible
 (global-set-key (kbd "C-c o") 
-                (lambda () (interactive) (find-file "~/Documents/Notes/inbox.org")))
+                (lambda () (interactive) (find-file "~/Notes/inbox.org")))
 
 ;; using org-refile and change the default depth
 (setq org-refile-targets '((org-agenda-files . (:maxlevel . 6))))
@@ -543,7 +543,13 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(modus-vivendi))
  '(custom-safe-themes
-   '("516ec39655c85f346393f5d93e0f03602b6bfc33335bf2fd673016c9c4cdc69e"
+   '("0f738dce3f831b6d64ee3e98052bdea663b74d5149dcbbf555327dcb4517fc08"
+     "0da9f48243b77c83719c569efd88a7e47c1d8a3f2887838408745d2d52fad8a8"
+     "ed2efc874021b54144b9ed9874e4d9c036090488aeabe19c9ac28576a162ec12"
+     "6965a903ced31bd58caddb7e7035aadc47f8b0a5c57f246b698be2dfdfed2c4e"
+     "83447ed09cba2ec725225cb3789b38ba94bd4ec4e0253e8d85f278076bc5b6cf"
+     "967c23e9ba179b80560774419f081df22e7674aac23c5c550b817e4a1ce7d058"
+     "516ec39655c85f346393f5d93e0f03602b6bfc33335bf2fd673016c9c4cdc69e"
      "6a95b0faf6cee6adfda34cdfadb2fed6f4157a1d49aabef8cc9b94c187d69a1d"
      "8fbf2d585f1138caaafa9e523fa3a20614c1d1dcc6002c9808c3e40028e21df4"
      "84581927169c3b4a7c57fd0f8cce8aa91823291e403bd577fde32b8c30800279"
@@ -595,9 +601,9 @@
 				    ef-themes erc gruvbox-theme magit
 				    marginalia markdown-mode
 				    nano-theme olivetti orderless
-				    org-contacts spacemacs-theme
-				    use-package vertico which-key
-				    zenburn-theme)))
+				    org-contacts org-ql
+				    spacemacs-theme use-package
+				    vertico which-key zenburn-theme)))
 
 
 ;;   (custom-set-variables
