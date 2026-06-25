@@ -23,7 +23,7 @@
 (scroll-bar-mode 0)
 (tool-bar-mode 0)
 (menu-bar-mode 1)
-;; (load-theme 'material-light t)
+(load-theme 'ef-elea-dark t)
 
 ;; setting font
 ;;(set-frame-font "Iosevka-13" nil t)
@@ -64,6 +64,13 @@
       (define-key term-raw-map (kbd "M-o") 'other-window)))
 
 ;; (winner-mode 1)
+
+
+;; ------------------------------------------------------------------------------------
+;; exec-path-from-shell
+
+(exec-path-from-shell-initialize)
+
 
 ;; ------------------------------------------------------------------------------------
 ;; Denote
@@ -281,14 +288,14 @@
 ;; Org
 
 
-(setq org-default-notes-file "~/Notes/inbox.org")
-(setq org-directory "~/Notes")
+
+(setq org-directory "~/Org/")
 (setq org-agenda-files  '("inbox.org" "meetings.org"))
 
 
 ;; have the main org file easily accessible
 (global-set-key (kbd "C-c o") 
-                (lambda () (interactive) (find-file "~/Notes/inbox.org")))
+                (lambda () (interactive) (find-file "~/Org/inbox.org")))
 
 ;; using org-refile and change the default depth
 (setq org-refile-targets '((org-agenda-files . (:maxlevel . 6))))
@@ -543,7 +550,14 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(modus-vivendi))
  '(custom-safe-themes
-   '("0f738dce3f831b6d64ee3e98052bdea663b74d5149dcbbf555327dcb4517fc08"
+   '("cf0e1f8a027d3a38602ce6628399db5550ad7f0598c01979e01ab45b8a631639"
+     "578002ec7093cedeb7d279794492b19ad7413cca3e16286e776168eb544798c4"
+     "01bb579ed8a5b4a77490798626a96ae153288b8c2709e291162cfcc2e0aad647"
+     "e684e71b7276a85c0ec8ee8f3ff4bc6b61dbc1694288ad049e062029fc072e54"
+     "f5ab1ad901eb430cdcd9b2a6824e94ff384172a9492ff7a88fe989ee2d583f09"
+     "51caf9bf88aba940d98c96add138d83317d50eae4b8526612184e93473252d54"
+     "03ffccc093c553a238a54fea13f2056749d83c24e65940f8d4bdb7135f1199a5"
+     "0f738dce3f831b6d64ee3e98052bdea663b74d5149dcbbf555327dcb4517fc08"
      "0da9f48243b77c83719c569efd88a7e47c1d8a3f2887838408745d2d52fad8a8"
      "ed2efc874021b54144b9ed9874e4d9c036090488aeabe19c9ac28576a162ec12"
      "6965a903ced31bd58caddb7e7035aadc47f8b0a5c57f246b698be2dfdfed2c4e"
@@ -596,12 +610,13 @@
      "bb08c73af94ee74453c90422485b29e5643b73b05e8de029a6909af6a3fb3f58"
      default))
  '(olivetti-body-width 120)
+ '(org-default-notes-file "~/Org/inbox.org")
  '(package-selected-packages
    '(color-theme-sanityinc-tomorrow corfu csv-mode denote docker
-				    ef-themes erc gruvbox-theme magit
-				    marginalia markdown-mode
-				    nano-theme olivetti orderless
-				    org-contacts org-ql
+				    ef-themes erc exec-path-from-shell
+				    gruvbox-theme magit marginalia
+				    markdown-mode nano-theme olivetti
+				    orderless org-contacts org-ql
 				    spacemacs-theme use-package
 				    vertico which-key zenburn-theme)))
 
