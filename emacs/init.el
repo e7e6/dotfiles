@@ -550,7 +550,9 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(modus-vivendi))
  '(custom-safe-themes
-   '("cf0e1f8a027d3a38602ce6628399db5550ad7f0598c01979e01ab45b8a631639"
+   '("b89b6d95670712b8742f4391416483a29d4315323a218600590160e132c70ec8"
+     "f0ddff48ec78dec9ac9ea3236e7208ef58a86d445207a674523c0eba8e9743b0"
+     "cf0e1f8a027d3a38602ce6628399db5550ad7f0598c01979e01ab45b8a631639"
      "578002ec7093cedeb7d279794492b19ad7413cca3e16286e776168eb544798c4"
      "01bb579ed8a5b4a77490798626a96ae153288b8c2709e291162cfcc2e0aad647"
      "e684e71b7276a85c0ec8ee8f3ff4bc6b61dbc1694288ad049e062029fc072e54"
@@ -612,13 +614,12 @@
  '(olivetti-body-width 120)
  '(org-default-notes-file "~/Org/inbox.org")
  '(package-selected-packages
-   '(color-theme-sanityinc-tomorrow corfu csv-mode denote docker
-				    ef-themes erc exec-path-from-shell
-				    gruvbox-theme magit marginalia
-				    markdown-mode nano-theme olivetti
+   '(color-theme-sanityinc-tomorrow corfu csv-mode denote ef-themes erc
+				    exec-path-from-shell magit
+				    marginalia markdown-mode olivetti
 				    orderless org-contacts org-ql
-				    spacemacs-theme use-package
-				    vertico which-key zenburn-theme)))
+				    use-package vertico vterm
+				    which-key)))
 
 
 ;;   (custom-set-variables
